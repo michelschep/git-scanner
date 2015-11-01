@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ixmucane.GitScanner", "Ixmucane.GitScanner\Ixmucane.GitScanner.csproj", "{CC3CDF2F-ED74-4A90-B962-A031FFB3D5C2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ixmucane.GitScannerConsole", "Ixmucane.GitScanner\Ixmucane.GitScannerConsole.csproj", "{CC3CDF2F-ED74-4A90-B962-A031FFB3D5C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
