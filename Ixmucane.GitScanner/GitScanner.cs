@@ -67,13 +67,18 @@ namespace Ixmucane.GitScannerConsole
                     var options = new StatusOptions();
                     var repositoryStatus = repo.RetrieveStatus(options);
 
-                    var count = repositoryStatus.Modified.Count();
-                    if (count > 0)
-                        Console.WriteLine("Repo [{0}] contains {1} Unstaged files", rootFolder.Name, count);
+                    if (repositoryStatus.IsDirty)
+                        Console.WriteLine("Repo [{0}] is dirty", rootFolder.Name);
 
-                    count = repositoryStatus.Untracked.Count();
-                    if (count > 0)
-                        Console.WriteLine("Repo [{0}] contains {1} Untracked files", rootFolder.Name, count);
+//                    var count = repositoryStatus.Modified.Count();
+//                    if (count > 0)
+//                        Console.WriteLine("Repo [{0}] contains {1} Unstaged files", rootFolder.Name, count);
+//
+//                    count = repositoryStatus.Untracked.Count();
+//                    if (count > 0)
+//                        Console.WriteLine("Repo [{0}] contains {1} Untracked files", rootFolder.Name, count);
+
+
                 }
             }
             catch (Exception ex)
