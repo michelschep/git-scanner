@@ -34,7 +34,6 @@ namespace Ixmucane.GitScannerConsole
         bool PathIsTooLong(DirectoryInfo rootFolder)
         {
             // Hack...
-
             try
             {
                 var fullName = rootFolder.FullName;
@@ -70,23 +69,12 @@ namespace Ixmucane.GitScannerConsole
                     if (repositoryStatus.IsDirty)
                         Console.WriteLine("Repo [{0}] is dirty", rootFolder.Name);
 
-//                    var count = repositoryStatus.Modified.Count();
-//                    if (count > 0)
-//                        Console.WriteLine("Repo [{0}] contains {1} Unstaged files", rootFolder.Name, count);
-//
-//                    count = repositoryStatus.Untracked.Count();
-//                    if (count > 0)
-//                        Console.WriteLine("Repo [{0}] contains {1} Untracked files", rootFolder.Name, count);
-
-
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Repo [{0}] cannot be read: [{1}]", rootFolder.Name, ex.Message);
-
             }
         }
-
     }
 }
