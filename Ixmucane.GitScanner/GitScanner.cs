@@ -16,12 +16,14 @@ namespace Ixmucane.GitScannerConsole
 
         void Scan(DirectoryInfo rootFolder)
         {
+            // TODO For some reason when a path is too long the IsGitRepo gives an exception
+            // For now just ignore these folders. 
             if (PathIsTooLong(rootFolder))
                 return;
 
             if (IsGitRepo(rootFolder))
             {
-                CheckStatusGitFor(rootFolder);
+                CheckChangesInGitRepo(rootFolder);
                 return;
             }
 
@@ -49,27 +51,19 @@ namespace Ixmucane.GitScannerConsole
 
         bool IsGitRepo(DirectoryInfo rootFolder)
         {
-             return rootFolder.GetDirectories(".git").Any();
-        }
-
-        void CheckStatusGitFor(DirectoryInfo rootFolder)
-        {
-            CheckChangesInGitRepo(rootFolder);
+            return rootFolder.GetDirectories(".git").Any();
         }
 
         void CheckChangesInGitRepo(DirectoryInfo rootFolder)
         {
             try
             {
-                using (var repo = new LibGit2Sharp.Repository(rootFolder.FullName))
-                {
-                    var options = new StatusOptions();
-                    var repositoryStatus = repo.RetrieveStatus(options);
+                var repo = new Repository(rootFolder.FullName);
+                var options = new StatusOptions();
+                var repositoryStatus = repo.RetrieveStatus(options);
 
-                    if (repositoryStatus.IsDirty)
-                        Console.WriteLine("Repo [{0}] is dirty", rootFolder.Name);
-
-                }
+                if (repositoryStatus.IsDirty)
+                    Console.WriteLine("Repo [{0}] is dirty", rootFolder.Name);
             }
             catch (Exception ex)
             {
