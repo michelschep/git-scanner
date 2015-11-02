@@ -63,7 +63,7 @@ namespace Ixmucane.GitScannerConsole
                 var repositoryStatus = repo.RetrieveStatus(options);
 
                 if (repositoryStatus.IsDirty)
-                    Console.WriteLine("Repo [{0}] is dirty", rootFolder.Name);
+                    Console.WriteLine("Repo [{0} in {1}] is dirty", rootFolder.Name, rootFolder.Parent.FullName);
             }
             catch (Exception ex)
             {
